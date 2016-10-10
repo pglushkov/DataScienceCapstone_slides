@@ -52,10 +52,9 @@ The more often an N-gram is met - the bigger is its weight.
 
 ## Some details
 
-To accomplish this task, a very simple combination of 2-gram and 3-gram models
-was used. Models were build by:
+A very simple combination of 1-, 2- and 3-gram models was used. Models were build by:
 - cleaning out training data from numbers, punctuation, grammar stop-words, profanity
-- building 2- and 3-grams over resulting text
+- building 1-, 2- and 3-grams over resulting text
 - removing N-grams that occur very seldom (this is a tunable parameter of a model)
 
 After the model is built, prediction works as follows:
@@ -64,9 +63,10 @@ After the model is built, prediction works as follows:
 - predict next word using 2-gram model (only last word of phrase is used)
 - 3-gram prediction has more weight, use it as main result. In case 3-gram model
 makes empty prediction - use 2-gram prediction
+- if we have no 2-gram/3-gram predictions or if input was empty - fall back to
+1-gram model
 
-Several likely candidates are considered, but candidate with the highest frequency
-is taken as the most likely answer.
+Several likely candidates are considered, but candidate with the highest frequency is taken as the most likely answer.
 
 --- .class #id
 

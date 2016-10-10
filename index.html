@@ -101,12 +101,11 @@ The more often an N-gram is met - the bigger is its weight.</p>
     <h2>Some details</h2>
   </hgroup>
   <article data-timings="">
-    <p>To accomplish this task, a very simple combination of 2-gram and 3-gram models
-was used. Models were build by:</p>
+    <p>A very simple combination of 1-, 2- and 3-gram models was used. Models were build by:</p>
 
 <ul>
 <li>cleaning out training data from numbers, punctuation, grammar stop-words, profanity</li>
-<li>building 2- and 3-grams over resulting text</li>
+<li>building 1-, 2- and 3-grams over resulting text</li>
 <li>removing N-grams that occur very seldom (this is a tunable parameter of a model)</li>
 </ul>
 
@@ -118,10 +117,11 @@ was used. Models were build by:</p>
 <li>predict next word using 2-gram model (only last word of phrase is used)</li>
 <li>3-gram prediction has more weight, use it as main result. In case 3-gram model
 makes empty prediction - use 2-gram prediction</li>
+<li>if we have no 2-gram/3-gram predictions or if input was empty - fall back to
+1-gram model</li>
 </ul>
 
-<p>Several likely candidates are considered, but candidate with the highest frequency
-is taken as the most likely answer.</p>
+<p>Several likely candidates are considered, but candidate with the highest frequency is taken as the most likely answer.</p>
 
   </article>
   <!-- Presenter Notes -->
